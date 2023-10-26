@@ -23,7 +23,6 @@ docker login
 
 docker push <DOCKERHUB_USERNAME>/phonebook-app:latest
 docker push <DOCKERHUB_USERNAME>/phonebook-mysql:latest
-
 ```
 Replace <DOCKERHUB_USERNAME> with your Docker Hub username.
 
