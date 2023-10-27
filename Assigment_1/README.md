@@ -1,23 +1,24 @@
 # Cloud-Computing-och-Big-Data Assigment_1
-This repo is a clone of https://github.com/muhammadhanif/crud-application-using-flask-and-mysql/.
+This repository is a fork of https://github.com/muhammadhanif/crud-application-using-flask-and-mysql/.
 
-What is new is the kubernetes folder.
+In addition to the original project, this version includes functionality for deploying the applications using Kubernetes, with manifests (YAML files) for each application component located in the **kubernetes** folder.
 
-#### Built With
+The original project was developed using the following technologies:
 
-* Python
-* Python Libraries: flask and pymysql
-* MySQL
-* AdminLTE 2
+- Python
+- Python Libraries: Flask and PyMySQL
+- MySQL
+- AdminLTE 2
 
-#### Installation
-Build the Docker Images:
+## Set up
+
+### Build the Docker Images
 
 ```
 docker build -t <DOCKERHUB_USERNAME>/phonebook-app:latest -f Dockerfile-app .
 docker build -t <DOCKERHUB_USERNAME>/phonebook-mysql:latest -f Dockerfile-mysql .
 ```
-Push the Docker Images to Docker Hub:
+### Push the Docker Images to Docker Hub
 ```
 docker login
 
@@ -26,7 +27,7 @@ docker push <DOCKERHUB_USERNAME>/phonebook-mysql:latest
 ```
 Replace <DOCKERHUB_USERNAME> with your Docker Hub username.
 
-Deploy the application on Kubernetes using the Docker images.
+### Deploy the application on Kubernetes using the Docker images
 
 Navigate to the folder kubernetes, it contains Kubernetes manifests.
 
@@ -52,7 +53,7 @@ kubectl apply -f app-deployment.yaml
 kubectl apply -f app-service.yaml
 ```
 
-Access the Application:
+### Access the Application:
 
 If you've set up the Flask application service as a **LoadBalancer**, it might take a few minutes for the external IP to be provisioned (especially on cloud providers). Once provisioned, you can access the application using that IP.
 
@@ -62,7 +63,7 @@ kubectl get svc phonebook-app
 ```
 Look for the "EXTERNAL-IP" column in the output.
 
-Scaling & Management:
+### Scaling & Management:
 
 To scale the Flask application, adjust the **replicas** field in **app-deployment.yaml** and reapply the configuration:
 
@@ -70,18 +71,18 @@ To scale the Flask application, adjust the **replicas** field in **app-deploymen
 kubectl apply -f k8s/app/app-deployment.yaml
 ```
 
-To monitor the pods and services:
+### To monitor the pods and services:
 ```
 kubectl get pods
 kubectl get svc
 ```
 
-To check logs for a specific pod:
+### To check logs for a specific pod:
 ```
 kubectl logs <POD_NAME>
 ```
 
-Clean Up (Optional):
+### Clean Up (Optional):
 
 If you want to remove the deployed resources:
 
