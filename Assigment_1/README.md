@@ -1,7 +1,7 @@
 # Cloud-Computing-och-Big-Data Assigment_1
 This repository is a fork of https://github.com/muhammadhanif/crud-application-using-flask-and-mysql/.
 
-In addition to the original project, this version includes functionality for deploying the applications using Kubernetes, with manifests (YAML files) for each application component located in the **kubernetes** folder.
+In addition to the original project, this version includes functionality for deploying the applications using Kubernetes, with manifests (YAML files) for each application component located in the **kubernetes** folder. Furthermore, an implementation of REST API was added to the server application, allowing for programmatic access to phonebook entries.
 
 The original project was developed using the following technologies:
 
@@ -69,6 +69,34 @@ To scale the Flask application, adjust the **replicas** field in **app-deploymen
 
 ```
 kubectl apply -f k8s/app/app-deployment.yaml
+```
+### Test the REST API 
+
+You can test the REST API using tools like curl or Postman. Here are some examples of how you can use curl to test the REST API:
+
+**Get all phonebook entries:**
+```
+curl http://localhost:8181/api/phonebook
+```
+
+**Get a single phonebook entry by ID:**
+```
+curl http://localhost:8181/api/phonebook/1
+```
+
+**Create a new phonebook entry:**
+```
+curl -X POST -H "Content-Type: application/json" -d '{"name": "Alice", "phone": "123-456-7890", "address": "123 Main St"}' http://localhost:8181/api/phonebook
+```
+
+**Update a phonebook entry by ID:**
+```
+curl -X PUT -H "Content-Type: application/json" -d '{"name": "Alice", "phone": "987-654-3210", "address": "456 Elm St"}' http://localhost:8181/api/phonebook/1
+```
+
+**Delete a phonebook entry by ID:**
+```
+curl -X DELETE http://localhost:8181/api/phonebook/1
 ```
 
 ### To monitor the pods and services:
