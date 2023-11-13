@@ -76,27 +76,27 @@ You can test the REST API using tools like curl or Postman. Here are some exampl
 
 **Get all phonebook entries:**
 ```
-curl http://localhost:8181/api/phonebook
+curl http://localhost/api/phonebook
 ```
 
 **Get a single phonebook entry by ID:**
 ```
-curl http://localhost:8181/api/phonebook/1
+curl http://localhost/api/phonebook/1
 ```
 
 **Create a new phonebook entry:**
 ```
-curl -X POST -H "Content-Type: application/json" -d '{"name": "Alice", "phone": "123-456-7890", "address": "123 Main St"}' http://localhost:8181/api/phonebook
+curl -X POST -H "Content-Type: application/json" -d '{"name": "Alice", "phone": "123-456-7890", "address": "123 Main St"}' http://localhost/api/phonebook
 ```
 
 **Update a phonebook entry by ID:**
 ```
-curl -X PUT -H "Content-Type: application/json" -d '{"name": "Alice", "phone": "987-654-3210", "address": "456 Elm St"}' http://localhost:8181/api/phonebook/1
+curl -X PUT -H "Content-Type: application/json" -d '{"name": "Alice", "phone": "987-654-3210", "address": "456 Elm St"}' http://localhost/api/phonebook/1
 ```
 
 **Delete a phonebook entry by ID:**
 ```
-curl -X DELETE http://localhost:8181/api/phonebook/1
+curl -X DELETE http://localhost/api/phonebook/1
 ```
 
 ### To monitor the pods and services:
